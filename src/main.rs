@@ -205,7 +205,7 @@ fn main() -> Result<()> {
     }
     println!("Rank {rank:?} spawned");
 
-    //let device = Device::new_cuda(i)?;
+    let device = Device::new_cuda(i)?;
     let cache = model::Cache::new(dtype, &config, &device)?;
 
     println!("building the model");

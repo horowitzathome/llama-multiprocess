@@ -164,6 +164,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "candle-flash-attn"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "09fc1c70cbe8bce4dcaba9dda071fcd569e1b1f21ea0f6d4db6ea537fdf52476"
+dependencies = [
+ "anyhow",
+ "candle-core",
+ "half",
+ "num_cpus",
+ "rayon",
+]
+
+[[package]]
 name = "candle-gemm"
 version = "0.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -320,6 +333,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "196742c5676b9af54c782304609f3e480c871e5588451d9806b2df8fc11e324c"
 dependencies = [
  "candle-core",
+ "candle-flash-attn",
  "candle-nn",
  "num-traits",
  "rand",
@@ -807,6 +821,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "candle-core",
+ "candle-flash-attn",
  "candle-nn",
  "candle-transformers",
  "clap",

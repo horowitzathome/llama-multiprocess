@@ -52,10 +52,10 @@ impl CustomOp1 for AllReduce {
     #[cfg(feature = "cuda")]
     fn cuda_fwd(
         &self,
-        s: &candle::CudaStorage,
+        s: &candle_core::CudaStorage,
         l: &Layout,
-    ) -> Result<(candle::CudaStorage, Shape)> {
-        use candle::cuda_backend::WrapErr;
+    ) -> Result<(candle_core::CudaStorage, Shape)> {
+        use candle_core::cuda_backend::WrapErr;
         let elem_count = l.shape().elem_count();
         let dev = s.device().clone();
         let s = s.as_cuda_slice::<f16>()?;
@@ -65,7 +65,7 @@ impl CustomOp1 for AllReduce {
         // };
         let mut dst = unsafe { dev.alloc::<f16>(elem_count) }.w()?;
         self.comm.all_reduce(s, &mut dst, &ReduceOp::Sum).unwrap();
-        let dst = candle::CudaStorage::wrap_cuda_slice(dst, dev);
+        let dst = candle_core::CudaStorage::wrap_cuda_slice(dst, dev);
         Ok((dst, l.shape().clone()))
     }
 }
