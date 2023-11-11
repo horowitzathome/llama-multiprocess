@@ -33,7 +33,7 @@ export PATH=/usr/local/cuda-12.3/bin${PATH:+:${PATH}}
 echo $PATH
 
 
-https://github.com/horowitzathome/llama-multiprocess.git
+git clone https://github.com/horowitzathome/llama-multiprocess.git
 cd llama-multiprocess
 
 cargo run --features cuda --release -- --prompt 'Tell me 3 presidents of the USA' --sample-len 150  
